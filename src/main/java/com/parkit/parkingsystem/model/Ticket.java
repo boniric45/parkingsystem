@@ -35,17 +35,13 @@ public class Ticket {
         this.vehicleRegNumber = vehicleRegNumber;
     }
 
-    public double getPrice() {
-        return price;
-    }
+    public double getPrice() { return price; }
 
     public void setPrice(double price) {
         this.price = price;
     }
 
-    public Date getInTime() {
-        return inTime;
-    }
+    public Date getInTime() {return inTime;    }
 
     public void setInTime(Date inTime) {
         this.inTime = inTime;

@@ -1,12 +1,15 @@
 package com.parkit.parkingsystem;
 
 import com.parkit.parkingsystem.service.InteractiveShell;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.*;
 
 public class App {
+
     private static final Logger logger = LogManager.getLogger("App");
-    public static void main(String args[]){
+
+    public static void main(String[] args){
+        PropertyConfigurator.configure("resources/log4j.properties");//Path file log4j.properties
+        logger.setLevel(Level.DEBUG); //Level log DEBUG
         logger.info("Initializing Parking System");
         InteractiveShell.loadInterface();
     }
