@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Ticket {
 
-    public double Freeminute;
+    public double freeMinute;
     private int id;
     private ParkingSpot parkingSpot;
     private String vehicleRegNumber;
@@ -61,11 +61,11 @@ public class Ticket {
     }
 
     public double getFreeminute() {
-        return Freeminute;
+        return freeMinute;
     }
 
     public void setFreeminute(double freeminute) {
-        Freeminute = freeminute;
+        freeMinute = freeminute;
     }
 
 }
