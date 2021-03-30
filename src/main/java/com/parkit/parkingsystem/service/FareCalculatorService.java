@@ -16,7 +16,6 @@ public class FareCalculatorService {
                 ticket.setPrice(Math.abs(Fare.CAR_RATE_PER_MINUTE * duration));
                 break;
             }
-
             case BIKE: {
                 ticket.setPrice(Math.abs(Fare.BIKE_RATE_PER_MINUTE * duration));
                 break;
