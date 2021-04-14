@@ -4,7 +4,7 @@ import com.parkit.parkingsystem.integration.config.DataBaseTestConfig;
 
 import java.sql.Connection;
 
-public class DataBasePrepareService {
+public class DataBasePrepareServiceTest {
 
     DataBaseTestConfig dataBaseTestConfig = new DataBaseTestConfig();
 

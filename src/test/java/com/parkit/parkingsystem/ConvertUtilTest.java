@@ -43,7 +43,7 @@ public class ConvertUtilTest {
         ticket.setFreeminute(30); // grab the time
 
         //WHEN
-        fareCalculatorService.calculateFare(ticket);
+        fareCalculatorService.calculateFare(ticket,false);
 
         //THEN
         assertEquals(ticket.getPrice(), ConvertUtil.convertFreeMinutes(ticket) * Fare.CAR_RATE_PER_MINUTE);// 1 Hour - Free Minute = 30 Minutes

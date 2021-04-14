@@ -16,7 +16,6 @@ import java.sql.Timestamp;
 public class TicketDAO {
 
     private static final Logger logger = LogManager.getLogger("TicketDAO");
-
     public DataBaseConfig dataBaseConfig = new DataBaseConfig();
 
     public boolean saveTicket(Ticket ticket) {
@@ -39,15 +38,18 @@ public class TicketDAO {
             return false;
         }
     }
+
     public Ticket getTicket(String vehicleRegNumber) {
         Connection con = null;
         Ticket ticket = null;
+
         try {
             con = dataBaseConfig.getConnection();
             PreparedStatement ps = con.prepareStatement(DBConstants.GET_TICKET);
             //ID, PARKING_NUMBER, VEHICLE_REG_NUMBER, PRICE, IN_TIME, OUT_TIME)
             ps.setString(1, vehicleRegNumber);
             ResultSet rs = ps.executeQuery();
+
             if (rs.next()) {
                 ticket = new Ticket();
                 ParkingSpot parkingSpot = new ParkingSpot(rs.getInt(1), ParkingType.valueOf(rs.getString(6)), false);
@@ -84,5 +86,25 @@ public class TicketDAO {
             dataBaseConfig.closeConnection(con);
         }
         return false;
+    }
+
+    public int getTicketDatabase(String vehicleRegNumber) {
+        Connection con = null;
+        int ticketNumber = 0;
+        try {
+            con = dataBaseConfig.getConnection();
+            PreparedStatement ps = con.prepareStatement(DBConstants.GET_TICKET_REDUCTION);
+            ps.setString(1, vehicleRegNumber);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            ticketNumber = rs.getInt("nbTicket");
+            dataBaseConfig.closeResultSet(rs);
+            dataBaseConfig.closePreparedStatement(ps);
+        } catch (Exception ex) {
+            logger.error("Error fetching next available slot", ex);
+        } finally {
+            dataBaseConfig.closeConnection(con);
+        }
+        return ticketNumber;
     }
 }

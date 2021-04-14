@@ -21,14 +21,19 @@ public class ConvertUtil {
 
         ticket.setFreeminute(30);
         double nbrFreeMinutes = ticket.getFreeminute(); // number free minutes
-        nbrFreeMinutes *= 60000; // convert milliseconds
+        nbrFreeMinutes *= 60000; // convert free minute to milliseconds
 
         //Calcul past time
         double duration = outHourPark - inHourPark; // past time
         duration -= nbrFreeMinutes; // subtract free minute from time spent
         duration = duration / 60 / 1000; // Convert to minutes
 
+        //
+        if (duration < 30) {
+            duration = 0;
+        }
         return duration;
     }
+
 
 }
