@@ -107,26 +107,26 @@
     <orderEntry type="library" name="Maven: org.ow2.asm:asm-analysis:7.2" level="project" />
     <orderEntry type="library" name="Maven: org.ow2.asm:asm-tree:7.2" level="project" />
     <orderEntry type="library" name="Maven: org.jacoco:org.jacoco.report:0.8.5" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven.plugins:maven-assembly-plugin:3.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven.plugins:maven-assembly-plugin:3.2.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-artifact:3.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-model:3.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven.shared:maven-common-artifact-filters:3.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven.shared:maven-common-artifact-filters:3.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.shared:maven-shared-utils:3.1.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven.shared:maven-artifact-transfer:0.9.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven.shared:maven-artifact-transfer:0.11.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.5" level="project" />
-    <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-interpolation:1.24" level="project" />
-    <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-archiver:3.4" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.commons:commons-compress:1.11" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-interpolation:1.25" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-archiver:4.2.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-compress:1.19" level="project" />
     <orderEntry type="library" name="Maven: org.iq80.snappy:snappy:0.4" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.tukaani:xz:1.5" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.tukaani:xz:1.8" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.shared:maven-shared-io:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-compat:3.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.wagon:wagon-provider-api:2.10" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.5" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.shared:maven-filtering:3.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.sonatype.plexus:plexus-build-api:0.0.7" level="project" />
-    <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-io:2.7.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.maven:maven-archiver:3.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-io:3.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.maven:maven-archiver:3.5.0" level="project" />
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.6" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.12" level="project" />
     <orderEntry type="library" name="Maven: org.jetbrains:annotations:20.1.0" level="project" />

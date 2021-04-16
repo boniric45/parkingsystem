@@ -1,6 +1,6 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 parking-system,com.parkit.parkingsystem.service,FareCalculatorService,30,89,3,6,4,24,3,5,0,3
-parking-system,com.parkit.parkingsystem.service,ParkingService,39,227,6,5,13,58,6,7,0,7
+parking-system,com.parkit.parkingsystem.service,ParkingService,34,232,6,5,11,60,6,7,0,7
 parking-system,com.parkit.parkingsystem.service,InteractiveShell,72,0,6,0,28,0,8,0,4,0
 parking-system,com.parkit.parkingsystem,App,17,0,0,0,7,0,3,0,3,0
 parking-system,com.parkit.parkingsystem.model,ParkingSpot,37,25,8,0,9,10,8,5,4,5
