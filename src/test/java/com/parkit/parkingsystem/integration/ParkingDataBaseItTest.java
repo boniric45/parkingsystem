@@ -57,6 +57,13 @@ public class ParkingDataBaseItTest {
         when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
         dataBasePrepareServiceTest.clearDataBaseEntries();
     }
+    public double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+        long factor = (long) Math.pow(10, places);
+        value = value * factor;
+        long tmp = Math.round(value);
+        return (double) tmp / factor;
+    }
 
     @Test
     public void testParkingACar() throws Exception {
@@ -82,35 +89,29 @@ public class ParkingDataBaseItTest {
 
         //GIVEN
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
-        String vehiculeRegNumber = "ABCDEF";
-        String fare = "0,75";
-        Date outTimeNow = new Date();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String vehiculeRegNumber = inputReaderUtil.readVehicleRegistrationNumber();
+        Ticket ticket = new Ticket();
+        TicketDAO ticketDAO = new TicketDAO();
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
+        Date inTime = new Date();
+        double fare = 0;
 
         //WHEN
+        ticket.setInTime(inTime);
         parkingService.processIncomingVehicle();
         parkingService.processExitingVehicle();
-        ticketDAO.saveTicket(ticketDAO.getTicket(vehiculeRegNumber));
-        Date outTimeInBdd = ticketDAO.getTicket(vehiculeRegNumber).getOutTime();
-        System.out.println("Outimebdd > " + outTimeInBdd);
-        System.out.println("> " + ticketDAO.saveTicket(ticketDAO.getTicket(vehiculeRegNumber)));
-        String dateNow = simpleDateFormat.format(outTimeNow);
-        String dateInBdd = simpleDateFormat.format(outTimeInBdd);
-
-        //Format price bdd two digits
-        double priceInBdd = ticketDAO.getTicket(vehiculeRegNumber).getPrice();
-        String fareInBdd = String.format("%.2f", priceInBdd);
+        double priceInBdd = round(ticket.getPrice(),2);
 
         //THEN
-        assertEquals(dateNow, dateInBdd);
-        assertEquals(fare, fareInBdd);
+        assertEquals(fare, priceInBdd);
     }
 
     @Test
     public void testFareFivePercent() throws Exception {
 
         //GIVEN
-        Date inTime = new Date(System.currentTimeMillis() - (24 * 60 * 60 * 1000)); // 24 Hours
+        Date inTime = new Date(System.currentTimeMillis() - (7 * 60 * 60 * 1000)); // 7 Hours
         Date outTime = new Date();
         ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
         ParkingSpot parkingSpot = parkingService.getNextParkingNumberIfAvailable();
@@ -118,36 +119,33 @@ public class ParkingDataBaseItTest {
         FareCalculatorService fareCalculatorService = new FareCalculatorService();
         Ticket ticket = new Ticket();
         int nbrTicketCreate = 3;
-        String fareExpected = "22,33";
+        double fareExpected = 6.18;
+        boolean reducElligible=false;
 
         //WHEN
-        //Create 3 tickets with vehicleRegNumber in bdd,
+        //Create 3 tickets with vehicleRegNumber in bdd test,
         for (int i = 1; i < nbrTicketCreate + 1; i++) {
             parkingSpot = new ParkingSpot(i, ParkingType.BIKE, false);
             ticket.setVehicleRegNumber(vehiculeRegNumber);
             ticket.setParkingSpot(parkingSpot);
             ticket.setInTime(inTime);
             ticket.setOutTime(outTime);
-            fareCalculatorService.calculateFare(ticket, false);
+            reducElligible = HasReductionUtilTest.hasReduction(vehiculeRegNumber); // elligible reduction
+            fareCalculatorService.calculateFare(ticket,reducElligible); // Calcul ticket
             parkingSpot.setAvailable(true);
             parkingSpotDAO.updateParking(parkingSpot);
             ticketDAO.saveTicket(ticket);
-            //System.out.println("\nTicket intime > " + ticket.getInTime() + "\n" + "Ticket outtime > " + ticket.getOutTime() + "\n" + "Price : " + ticket.getPrice() + "\n" + "Parking Number: " + parkingSpot.getId() + "\n");
+         //   System.out.println("\nTicket intime > " + ticket.getInTime() + "\n" + "Ticket outtime > " + ticket.getOutTime() + "\n" + "Price : " + ticket.getPrice() + "\n" + "Parking Number: " + parkingSpot.getId() + "\n");
         }
 
         //Search ticket number in bdd
-        vehiculeRegNumber = "ABCDEF";
         int numberTicketFind = ticketDAO.getTicketDatabase(vehiculeRegNumber);//Number Find db recette
-        boolean reducElligible = HasReductionUtilTest.hasReduction(vehiculeRegNumber); // elligible reduction
-        fareCalculatorService.calculateFare(ticket,reducElligible); // Calcul ticket
-
-
-
         String fare = String.format("%.2f", ticket.getPrice()); // Format price two digit
+        double fareBdd = round(ticket.getPrice(),2);
 
         //THEN
         assertEquals(nbrTicketCreate, numberTicketFind);
-        assertEquals(fareExpected,fare);
+        assertEquals(fareExpected,fareBdd);
         assertTrue(reducElligible);
     }
 }

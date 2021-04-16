@@ -25,13 +25,13 @@ public class ConvertUtil {
 
         //Calcul past time
         double duration = outHourPark - inHourPark; // past time
-        duration -= nbrFreeMinutes; // subtract free minute from time spent
-        duration = duration / 60 / 1000; // Convert to minutes
 
-        //
-        if (duration < 30) {
+        if (duration<30){
             duration = 0;
         }
+
+        duration -= nbrFreeMinutes; // subtract free minute from time spent
+        duration = duration / 60 / 1000; // Convert to minutes
         return duration;
     }
 

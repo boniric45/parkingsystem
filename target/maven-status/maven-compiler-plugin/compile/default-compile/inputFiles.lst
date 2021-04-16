@@ -1,0 +1,15 @@
+D:\Openclassrooms\Projet4\parkingsystem\src\main\java\com\parkit\parkingsystem\constants\ParkingType.java
+D:\Openclassrooms\Projet4\parkingsystem\src\main\java\com\parkit\parkingsystem\model\ParkingSpot.java
+D:\Openclassrooms\Projet4\parkingsystem\src\main\java\com\parkit\parkingsystem\constants\Fare.java
+D:\Openclassrooms\Projet4\parkingsystem\src\main\java\com\parkit\parkingsystem\constants\DBConstants.java
+D:\Openclassrooms\Projet4\parkingsystem\src\main\java\com\parkit\parkingsystem\service\FareCalculatorService.java
+D:\Openclassrooms\Projet4\parkingsystem\src\main\java\com\parkit\parkingsystem\service\ParkingService.java
+D:\Openclassrooms\Projet4\parkingsystem\src\main\java\com\parkit\parkingsystem\model\Ticket.java
+D:\Openclassrooms\Projet4\parkingsystem\src\main\java\com\parkit\parkingsystem\util\InputReaderUtil.java
+D:\Openclassrooms\Projet4\parkingsystem\src\main\java\com\parkit\parkingsystem\config\DataBaseConfig.java
+D:\Openclassrooms\Projet4\parkingsystem\src\main\java\com\parkit\parkingsystem\dao\ParkingSpotDAO.java
+D:\Openclassrooms\Projet4\parkingsystem\src\main\java\com\parkit\parkingsystem\service\InteractiveShell.java
+D:\Openclassrooms\Projet4\parkingsystem\src\main\java\com\parkit\parkingsystem\util\HasReductionUtil.java
+D:\Openclassrooms\Projet4\parkingsystem\src\main\java\com\parkit\parkingsystem\util\ConvertUtil.java
+D:\Openclassrooms\Projet4\parkingsystem\src\main\java\com\parkit\parkingsystem\App.java
+D:\Openclassrooms\Projet4\parkingsystem\src\main\java\com\parkit\parkingsystem\dao\TicketDAO.java
