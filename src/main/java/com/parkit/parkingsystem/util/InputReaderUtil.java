@@ -5,11 +5,22 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Scanner;
 
+
+/**
+ * reading user input from Shell
+ *
+ * @author Eric
+ * @version 1.0
+ */
 public class InputReaderUtil {
 
     private static final Scanner scan = new Scanner(System.in);
     private static final Logger logger = LogManager.getLogger("InputReaderUtil");
 
+
+    /**
+     * reading user input from Shell
+     */
     public int readSelection() {
         try {
             int input = Integer.parseInt(scan.nextLine());
@@ -21,6 +32,9 @@ public class InputReaderUtil {
         }
     }
 
+    /**
+     * reading vehicle registration number user input from Shell
+     */
     public String readVehicleRegistrationNumber() throws Exception {
         try {
             String vehicleRegNumber = scan.nextLine();
@@ -34,6 +48,4 @@ public class InputReaderUtil {
             throw e;
         }
     }
-
-
 }

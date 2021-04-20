@@ -11,11 +11,19 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+/**
+ * ParkingSpotDAO manages the search for available places and updating them.
+ *
+ * @author Eric
+ * @version 1.0
+ */
 public class ParkingSpotDAO {
     private static final Logger logger = LogManager.getLogger("ParkingSpotDAO");
-
     public DataBaseConfig dataBaseConfig = new DataBaseConfig();
 
+    /**
+     * get the next available parking space
+     */
     public int getNextAvailableSlot(ParkingType parkingType) {
         Connection con = null;
         int result = -1;
@@ -37,6 +45,9 @@ public class ParkingSpotDAO {
         return result;
     }
 
+    /**
+     * update the parking space
+     */
     public boolean updateParking(ParkingSpot parkingSpot) {
         //update the availability fo that parking slot
         Connection con = null;
@@ -50,9 +61,9 @@ public class ParkingSpotDAO {
             return (updateRowCount == 1);
         } catch (Exception ex) {
             logger.error("Error updating parking info", ex);
-            return false;
         } finally {
             dataBaseConfig.closeConnection(con);
         }
+        return false;
     }
 }

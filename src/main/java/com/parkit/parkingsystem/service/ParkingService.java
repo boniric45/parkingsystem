@@ -9,8 +9,16 @@ import com.parkit.parkingsystem.util.HasReductionUtil;
 import com.parkit.parkingsystem.util.InputReaderUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import java.util.Date;
 
+
+/**
+ * ParkingService manages vehicle entrances and exits.
+ *
+ * @author Eric
+ * @version 1.0
+ */
 public class ParkingService {
 
     private static final Logger logger = LogManager.getLogger("ParkingService");
@@ -19,12 +27,19 @@ public class ParkingService {
     private final ParkingSpotDAO parkingSpotDAO;
     private final TicketDAO ticketDAO;
 
+
+    /**
+     * Constructor.
+     */
     public ParkingService(InputReaderUtil inputReaderUtil, ParkingSpotDAO parkingSpotDAO, TicketDAO ticketDAO) {
         this.inputReaderUtil = inputReaderUtil;
         this.parkingSpotDAO = parkingSpotDAO;
         this.ticketDAO = ticketDAO;
     }
 
+    /**
+     * register the entry of a vehicle with the parking space, date and time.
+     */
     public void processIncomingVehicle() {
         try {
             ParkingSpot parkingSpot = getNextParkingNumberIfAvailable();
@@ -35,8 +50,6 @@ public class ParkingService {
 
                 Date inTime = new Date();
                 Ticket ticket = new Ticket();
-                //ID, PARKING_NUMBER, VEHICLE_REG_NUMBER, PRICE, IN_TIME, OUT_TIME)
-                //ticket.setId(ticketID);
                 ticket.setParkingSpot(parkingSpot);
                 ticket.setVehicleRegNumber(vehicleRegNumber);
                 ticket.setPrice(0);
@@ -52,11 +65,17 @@ public class ParkingService {
         }
     }
 
+    /**
+     * return the vehicle registration entry
+     */
     private String getVehichleRegNumber() throws Exception {
         System.out.println("Please type the vehicle registration number and press enter key");
         return inputReaderUtil.readVehicleRegistrationNumber();
     }
 
+    /**
+     * get the next parking number if available
+     */
     public ParkingSpot getNextParkingNumberIfAvailable() {
         int parkingNumber = 0;
         ParkingSpot parkingSpot = null;
@@ -76,6 +95,9 @@ public class ParkingService {
         return parkingSpot;
     }
 
+    /**
+     * Get the vehichle type
+     */
     private ParkingType getVehichleType() {
         System.out.println("Please select vehicle type from menu");
         System.out.println("1 CAR");
@@ -95,6 +117,9 @@ public class ParkingService {
         }
     }
 
+    /**
+     * register the exit of a vehicle, update the parking space and the ticket.
+     */
     public void processExitingVehicle() {
         try {
             String vehicleRegNumber = getVehichleRegNumber();
@@ -108,12 +133,12 @@ public class ParkingService {
                 ParkingSpot parkingSpot = ticket.getParkingSpot();
                 parkingSpot.setAvailable(true);
                 parkingSpotDAO.updateParking(parkingSpot);
-                System.out.println("Parking Number : "+parkingSpot.getId());
+                System.out.println("Parking Number : " + parkingSpot.getId());
                 System.out.println("Please pay the parking fare: " + ticket.getPrice());
                 System.out.println("Ticket with 30 free minutes");
                 System.out.println("Recorded out-time for vehicle number:" + ticket.getVehicleRegNumber() + " is:" + outTime);
             } else {
-                System.out.println("Unable to update ticket information. Error occurred");
+                logger.error("Unable to update ticket information. Error occurred");
             }
         } catch (Exception e) {
             logger.error("Unable to process exiting vehicle", e);

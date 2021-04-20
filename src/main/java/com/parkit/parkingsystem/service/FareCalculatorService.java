@@ -4,8 +4,18 @@ import com.parkit.parkingsystem.constants.Fare;
 import com.parkit.parkingsystem.model.Ticket;
 import com.parkit.parkingsystem.util.ConvertUtil;
 
+
+/**
+ * FareCalculatorService calculates tickets with reduction and free minutes.
+ *
+ * @author Eric
+ * @version 1.0
+ */
 public class FareCalculatorService {
 
+    /**
+     * round the ticket amount to two digits
+     */
     public static double round(double value, int places) {
         if (places < 0) throw new IllegalArgumentException();
         long factor = (long) Math.pow(10, places);
@@ -14,12 +24,16 @@ public class FareCalculatorService {
         return (double) tmp / factor;
     }
 
+    /**
+     * calculates tickets with reduction and free minutes.
+     */
     public void calculateFare(Ticket ticket, boolean reduction) {
 
         double duration = ConvertUtil.convertFreeMinutes(ticket); // return past time by minute - Free Minutes
         double reductionFare = 0;
         double finalFareWithReduction = 0;
         double finalFareWithoutReduction = 0;
+
         int montantReduction = 5;
 
         // Calcul Ticket

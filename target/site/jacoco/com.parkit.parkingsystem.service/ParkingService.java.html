@@ -113,10 +113,10 @@ public class ParkingService {
 <span class="fc" id="L113">                System.out.println(&quot;Ticket with 30 free minutes&quot;);</span>
 <span class="fc" id="L114">                System.out.println(&quot;Recorded out-time for vehicle number:&quot; + ticket.getVehicleRegNumber() + &quot; is:&quot; + outTime);</span>
 <span class="fc" id="L115">            } else {</span>
-<span class="nc" id="L116">                System.out.println(&quot;Unable to update ticket information. Error occurred&quot;);</span>
+<span class="nc" id="L116">                logger.error(&quot;Unable to update ticket information. Error occurred&quot;);</span>
             }
-<span class="fc" id="L118">        } catch (Exception e) {</span>
-<span class="fc" id="L119">            logger.error(&quot;Unable to process exiting vehicle&quot;, e);</span>
+<span class="nc" id="L118">        } catch (Exception e) {</span>
+<span class="nc" id="L119">            logger.error(&quot;Unable to process exiting vehicle&quot;, e);</span>
 <span class="fc" id="L120">        }</span>
 <span class="fc" id="L121">    }</span>
 }

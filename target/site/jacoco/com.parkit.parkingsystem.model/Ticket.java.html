@@ -4,7 +4,7 @@ import java.util.Date;
 
 <span class="fc" id="L5">public class Ticket {</span>
 
-    public double freeMinute;
+    private double freeMinute;
     private int id;
     private ParkingSpot parkingSpot;
     private String vehicleRegNumber;
@@ -36,37 +36,35 @@ import java.util.Date;
 <span class="fc" id="L36">        this.vehicleRegNumber = vehicleRegNumber;</span>
 <span class="fc" id="L37">    }</span>
 
-    public double getPrice() {
-<span class="fc" id="L40">        return price;</span>
-    }
+<span class="fc" id="L39">    public double getPrice() { return price;}</span>
 
     public void setPrice(double price) {
-<span class="fc" id="L44">        this.price = price;</span>
-<span class="fc" id="L45">    }</span>
+<span class="fc" id="L42">        this.price = price;</span>
+<span class="fc" id="L43">    }</span>
 
     public Date getInTime() {
-<span class="fc" id="L48">        return inTime;</span>
+<span class="fc" id="L46">        return inTime;</span>
     }
 
     public void setInTime(Date inTime) {
-<span class="fc" id="L52">        this.inTime = inTime;</span>
-<span class="fc" id="L53">    }</span>
+<span class="fc" id="L50">        this.inTime = inTime;</span>
+<span class="fc" id="L51">    }</span>
 
     public Date getOutTime() {
-<span class="fc" id="L56">        return outTime;</span>
+<span class="fc" id="L54">        return outTime;</span>
     }
 
     public void setOutTime(Date outTime) {
-<span class="fc" id="L60">        this.outTime = outTime;</span>
-<span class="fc" id="L61">    }</span>
+<span class="fc" id="L58">        this.outTime = outTime;</span>
+<span class="fc" id="L59">    }</span>
 
     public double getFreeminute() {
-<span class="fc" id="L64">        return freeMinute;</span>
+<span class="fc" id="L62">        return freeMinute;</span>
     }
 
     public void setFreeminute(double freeminute) {
-<span class="fc" id="L68">        freeMinute = freeminute;</span>
-<span class="fc" id="L69">    }</span>
+<span class="fc" id="L66">        freeMinute = freeminute;</span>
+<span class="fc" id="L67">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

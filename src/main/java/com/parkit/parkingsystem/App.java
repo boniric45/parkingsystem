@@ -6,6 +6,12 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
+/**
+ * parking space management application with invoicing
+ *
+ * @author Eric
+ * @version 1.0
+ */
 public class App {
 
     private static final Logger logger = LogManager.getLogger("App");

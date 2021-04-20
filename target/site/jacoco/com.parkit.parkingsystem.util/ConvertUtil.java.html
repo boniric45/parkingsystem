@@ -21,20 +21,17 @@ import java.util.Date;
 
 <span class="fc" id="L22">        ticket.setFreeminute(30);</span>
 <span class="fc" id="L23">        double nbrFreeMinutes = ticket.getFreeminute(); // number free minutes</span>
-<span class="fc" id="L24">        nbrFreeMinutes *= 60000; // convert free minute to milliseconds</span>
 
         //Calcul past time
-<span class="fc" id="L27">        double duration = outHourPark - inHourPark; // past time</span>
+<span class="fc" id="L26">        double duration = outHourPark - inHourPark; // past time in milliseconds</span>
+<span class="fc" id="L27">        duration = duration / 60 / 1000; // Convert to minutes</span>
 
-<span class="pc bpc" id="L29" title="1 of 2 branches missed.">        if (duration&lt;30){</span>
-<span class="nc" id="L30">            duration = 0;</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        if (duration&lt;30){</span>
+<span class="fc" id="L30">            nbrFreeMinutes = 0;</span>
         }
 
 <span class="fc" id="L33">        duration -= nbrFreeMinutes; // subtract free minute from time spent</span>
-<span class="fc" id="L34">        duration = duration / 60 / 1000; // Convert to minutes</span>
-<span class="fc" id="L35">        return duration;</span>
+<span class="fc" id="L34">        return duration;</span>
     }
-
-
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

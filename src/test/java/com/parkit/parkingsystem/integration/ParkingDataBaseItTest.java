@@ -1,6 +1,6 @@
 package com.parkit.parkingsystem.integration;
 
-import com.parkit.parkingsystem.HasReductionUtilTest;
+import com.parkit.parkingsystem.integration.config.HasReductionUtilTest;
 import com.parkit.parkingsystem.constants.ParkingType;
 import com.parkit.parkingsystem.dao.ParkingSpotDAO;
 import com.parkit.parkingsystem.dao.TicketDAO;
@@ -19,7 +19,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -123,7 +122,7 @@ public class ParkingDataBaseItTest {
         boolean reducElligible=false;
 
         //WHEN
-        //Create 3 tickets with vehicleRegNumber in bdd test,
+        //Create 3 tickets with vehicleRegNumber in bdd test
         for (int i = 1; i < nbrTicketCreate + 1; i++) {
             parkingSpot = new ParkingSpot(i, ParkingType.BIKE, false);
             ticket.setVehicleRegNumber(vehiculeRegNumber);
@@ -135,12 +134,10 @@ public class ParkingDataBaseItTest {
             parkingSpot.setAvailable(true);
             parkingSpotDAO.updateParking(parkingSpot);
             ticketDAO.saveTicket(ticket);
-         //   System.out.println("\nTicket intime > " + ticket.getInTime() + "\n" + "Ticket outtime > " + ticket.getOutTime() + "\n" + "Price : " + ticket.getPrice() + "\n" + "Parking Number: " + parkingSpot.getId() + "\n");
-        }
+           }
 
         //Search ticket number in bdd
         int numberTicketFind = ticketDAO.getTicketDatabase(vehiculeRegNumber);//Number Find db recette
-        String fare = String.format("%.2f", ticket.getPrice()); // Format price two digit
         double fareBdd = round(ticket.getPrice(),2);
 
         //THEN

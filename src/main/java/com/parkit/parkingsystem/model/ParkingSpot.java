@@ -2,6 +2,12 @@ package com.parkit.parkingsystem.model;
 
 import com.parkit.parkingsystem.constants.ParkingType;
 
+/**
+ * Model parking spot
+ *
+ * @author Eric
+ * @version 1.0
+ */
 public class ParkingSpot {
     private int number;
     private ParkingType parkingType;
@@ -14,6 +20,7 @@ public class ParkingSpot {
     }
 
     public int getId() {
+
         return number;
     }
 
@@ -22,6 +29,7 @@ public class ParkingSpot {
     }
 
     public ParkingType getParkingType() {
+
         return parkingType;
     }
 
@@ -30,10 +38,12 @@ public class ParkingSpot {
     }
 
     public boolean isAvailable() {
+
         return isAvailable;
     }
 
     public void setAvailable(boolean available) {
+
         isAvailable = available;
     }
 

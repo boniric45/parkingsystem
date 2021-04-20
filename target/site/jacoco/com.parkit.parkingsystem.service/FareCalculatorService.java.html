@@ -20,35 +20,36 @@ import com.parkit.parkingsystem.util.ConvertUtil;
 <span class="fc" id="L20">        double reductionFare = 0;</span>
 <span class="fc" id="L21">        double finalFareWithReduction = 0;</span>
 <span class="fc" id="L22">        double finalFareWithoutReduction = 0;</span>
-<span class="fc" id="L23">        int montantReduction = 5;</span>
+
+<span class="fc" id="L24">        int montantReduction = 5;</span>
 
         // Calcul Ticket
-<span class="pc bpc" id="L26" title="1 of 3 branches missed.">        switch (ticket.getParkingSpot().getParkingType()) {</span>
+<span class="pc bpc" id="L27" title="1 of 3 branches missed.">        switch (ticket.getParkingSpot().getParkingType()) {</span>
             case CAR: {
-<span class="pc bpc" id="L28" title="1 of 2 branches missed.">                if (reduction) {</span>
-<span class="nc" id="L29">                    reductionFare = Fare.CAR_RATE_PER_MINUTE * duration * montantReduction / 100;</span>
-<span class="nc" id="L30">                    finalFareWithReduction = (Fare.CAR_RATE_PER_MINUTE * duration) - reductionFare;</span>
-<span class="nc" id="L31">                    ticket.setPrice(round(finalFareWithReduction, 2));</span>
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">                if (reduction) {</span>
+<span class="nc" id="L30">                    reductionFare = Fare.CAR_RATE_PER_MINUTE * duration * montantReduction / 100;</span>
+<span class="nc" id="L31">                    finalFareWithReduction = (Fare.CAR_RATE_PER_MINUTE * duration) - reductionFare;</span>
+<span class="nc" id="L32">                    ticket.setPrice(round(finalFareWithReduction, 2));</span>
                 } else {
-<span class="fc" id="L33">                    finalFareWithoutReduction = Fare.CAR_RATE_PER_MINUTE * duration;</span>
-<span class="fc" id="L34">                    ticket.setPrice(round(finalFareWithoutReduction, 2));</span>
+<span class="fc" id="L34">                    finalFareWithoutReduction = Fare.CAR_RATE_PER_MINUTE * duration;</span>
+<span class="fc" id="L35">                    ticket.setPrice(round(finalFareWithoutReduction, 2));</span>
                 }
-<span class="fc" id="L36">                break;</span>
+<span class="fc" id="L37">                break;</span>
             }
             case BIKE: {
-<span class="fc bfc" id="L39" title="All 2 branches covered.">                if (reduction) {</span>
-<span class="fc" id="L40">                    reductionFare = Fare.BIKE_RATE_PER_MINUTE * duration * montantReduction / 100;</span>
-<span class="fc" id="L41">                    finalFareWithReduction = (Fare.BIKE_RATE_PER_MINUTE * duration) - reductionFare;</span>
-<span class="fc" id="L42">                    ticket.setPrice(round(finalFareWithReduction, 2));</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">                if (reduction) {</span>
+<span class="fc" id="L41">                    reductionFare = Fare.BIKE_RATE_PER_MINUTE * duration * montantReduction / 100;</span>
+<span class="fc" id="L42">                    finalFareWithReduction = (Fare.BIKE_RATE_PER_MINUTE * duration) - reductionFare;</span>
+<span class="fc" id="L43">                    ticket.setPrice(round(finalFareWithReduction, 2));</span>
                 } else {
-<span class="fc" id="L44">                    finalFareWithoutReduction = Fare.BIKE_RATE_PER_MINUTE * duration;</span>
-<span class="fc" id="L45">                    ticket.setPrice(round(finalFareWithoutReduction, 2));</span>
+<span class="fc" id="L45">                    finalFareWithoutReduction = Fare.BIKE_RATE_PER_MINUTE * duration;</span>
+<span class="fc" id="L46">                    ticket.setPrice(round(finalFareWithoutReduction, 2));</span>
                 }
-<span class="fc" id="L47">                break;</span>
+<span class="fc" id="L48">                break;</span>
             }
             default:
-<span class="nc" id="L50">                throw new IllegalArgumentException(&quot;Unkown Parking Type&quot;);</span>
+<span class="nc" id="L51">                throw new IllegalArgumentException(&quot;Unkown Parking Type&quot;);</span>
         }
-<span class="fc" id="L52">    }</span>
+<span class="fc" id="L53">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
