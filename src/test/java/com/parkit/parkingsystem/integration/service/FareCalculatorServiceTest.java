@@ -127,7 +127,7 @@ public class FareCalculatorServiceTest {
         ticket.setFreeminute(30);
 
         double tt = ConvertUtil.convertFreeMinutes(ticket);
-        System.out.println("In: " + ticket.getInTime() + "\nOut: " + ticket.getOutTime() + "\n Free Minutes : " + tt);
+       // System.out.println("In: " + ticket.getInTime() + "\nOut: " + ticket.getOutTime() + "\n Free Minutes : " + tt);
         fareCalculatorService.calculateFare(ticket, false);
 
         //THEN

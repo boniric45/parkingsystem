@@ -1,7 +1,7 @@
 com\parkit\parkingsystem\integration\ParkingDataBaseItTest.class
 com\parkit\parkingsystem\integration\service\FareCalculatorServiceTest.class
 com\parkit\parkingsystem\ConvertUtilTest.class
+com\parkit\parkingsystem\integration\config\HasReductionUtilTest.class
 com\parkit\parkingsystem\integration\service\ParkingServiceTest.class
 com\parkit\parkingsystem\integration\service\DataBasePrepareServiceTest.class
 com\parkit\parkingsystem\integration\config\DataBaseTestConfig.class
-com\parkit\parkingsystem\HasReductionUtilTest.class

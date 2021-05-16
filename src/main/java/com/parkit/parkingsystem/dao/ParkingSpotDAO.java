@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * ParkingSpotDAO manages the search for available places and updating them.
@@ -48,9 +49,10 @@ public class ParkingSpotDAO {
     /**
      * update the parking space
      */
-    public boolean updateParking(ParkingSpot parkingSpot) {
+    public boolean updateParking(ParkingSpot parkingSpot) throws SQLException {
         //update the availability fo that parking slot
         Connection con = null;
+
         try {
             con = dataBaseConfig.getConnection();
             PreparedStatement ps = con.prepareStatement(DBConstants.UPDATE_PARKING_SPOT);
@@ -63,6 +65,8 @@ public class ParkingSpotDAO {
             logger.error("Error updating parking info", ex);
         } finally {
             dataBaseConfig.closeConnection(con);
+            assert con != null;
+            con.close();
         }
         return false;
     }

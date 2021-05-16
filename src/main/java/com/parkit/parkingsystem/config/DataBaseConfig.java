@@ -3,14 +3,16 @@ package com.parkit.parkingsystem.config;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.*;
+import java.util.Properties;
 
 /**
  * DataBaseConfig manages the connection to a database
  *
  * @author Eric
  * @version 1.0
- *
  */
 public class DataBaseConfig {
     private static final Logger logger = LogManager.getLogger("DataBaseConfig");
@@ -21,11 +23,25 @@ public class DataBaseConfig {
     public Connection getConnection() throws ClassNotFoundException, SQLException {
         logger.info("Create DB connection");
         Class.forName("com.mysql.cj.jdbc.Driver");
+        String user = null;
+        String pass = null;
+
+        Properties properties = new Properties();
+        try {
+            properties.load(new FileInputStream("resources/db.properties"));
+            for (String key : properties.stringPropertyNames()) {
+                String value = properties.getProperty(key);
+                user = key;
+                pass = value;
+            }
+        } catch (IOException e) {
+            logger.error("File load Error : " + e);
+        }
 
         return DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/prod?useUnicode=true" +
                         "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&" +
-                        "serverTimezone=UTC", "root", "rootroot");
+                        "serverTimezone=UTC", user, pass);
     }
 
     /**

@@ -53,32 +53,30 @@ public class Ticket {
     }
 
     public void setPrice(double price) {
-
         this.price = price;
     }
 
     public Date getInTime() {
-
-        return inTime;
+        return (Date) inTime.clone();
     }
 
     public void setInTime(Date inTime) {
-
-        this.inTime = inTime;
+        this.inTime = (Date) inTime.clone();
     }
 
     public Date getOutTime() {
-
-        return outTime;
+        return outTime != null
+                ? new Date(outTime.getTime())
+                : null;
     }
 
     public void setOutTime(Date outTime) {
-
-        this.outTime = outTime;
+        this.outTime = outTime != null
+                ? new Date(outTime.getTime())
+                : null;
     }
 
     public double getFreeminute() {
-
         return freeMinute;
     }
 
